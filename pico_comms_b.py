@@ -11,10 +11,11 @@ count = 0
 while True:
     # send a message
     com1.send(f'hello, {count}')
-
-    # check for messages
+    
+    #check for messages
     message = com1.read()
+    
     if message is not None:
-        print(message.decode('utf-8'))
+        print(f"message: {message.strip('\n')}")
     sleep(1)
-    count += 1
+    count +=1
