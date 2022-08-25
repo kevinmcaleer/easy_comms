@@ -10,8 +10,8 @@ led = Pin("LED", Pin.OUT, value=0)
 
 while True:
     message = com1.read()
-    print(f'message: {message}')
     if message is not None:
+        print(f'message: {message}')
         try:
             command = json.loads(message)
             print(f'json: {command}')
