@@ -1,11 +1,13 @@
 #Easy comms is a simple class that allows you to send and receive messages over a serial port.
 
 from machine import UART, Pin
+from time import time_ns
 
 class Easy_comms:
  
     uart_id = 0
     baud_rate = 9600
+    timeout = 1000 # milliseconds
     
     def __init__(self, uart_id:int, baud_rate:int=None):
         self.uart_id = uart_id
@@ -28,8 +30,18 @@ class Easy_comms:
         self.send(message)
 
     def read(self)->str:
-        if self.uart.any() > 0: 
-            return self.uart.readline().decode('utf-8').strip('\n')
+        start_time = time_ns()
+        current_time = start_time
+        new_line = False
+        message = ""
+        while (not new_line) or (current_time <= (start_time + self.timeout)):
+            if (self.uart.any() > 0):
+                message = message + self.uart.read().decode('utf-8')
+                if '\n' in message:
+                    new_line = True
+                    message = message.strip('\n')
+                    print(f'received message: {message}')
+                    return message
         else:
             return None
         
