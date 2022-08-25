@@ -8,7 +8,7 @@ com1 = Easy_comms(0,9600)
 led = Pin("LED", Pin.OUT, value=0)
 
 while True:
-    message = com1.readline()
+    message = com1.read()
     if message is not None:
         if message['command'] == 'blink':
             if message['args'] == 'on':
