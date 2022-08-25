@@ -17,8 +17,9 @@ class Easy_comms:
         # Initialise the UART serial port
         self.uart.init()
             
-    def send(self, message):
+    def send(self, message:str):
         print(f'sending message: {message}')
+        message = message + '\n'
         self.uart.write(bytes(message,'utf-8'))
         
     def start(self):
@@ -28,7 +29,7 @@ class Easy_comms:
 
     def read(self)->str:
         if self.uart.any() > 0: 
-            return self.uart.readline().decode('utf-8')
+            return self.uart.readline().decode('utf-8').strip('\n')
         else:
             return None
         
