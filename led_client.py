@@ -10,6 +10,7 @@ led = Pin("LED", Pin.OUT, value=0)
 
 while True:
     message = com1.read()
+    
     if message is not None:
         try:
             command = json.loads(message)
@@ -18,6 +19,6 @@ while True:
                     led.on()
                 if command['args'] == 'off':
                     led.off()
-            sleep(0.01)
+            sleep(0.1)
         except Exception as e:
             print(f'error: {e}')
