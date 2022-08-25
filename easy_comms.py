@@ -16,7 +16,7 @@ class Easy_comms:
         self.uart.write(bytes(message,'utf-8'))
         
     def start(self):
-        message = "ahoy"
+        message = "ahoy\n"
         print(message)
         self.send(message)
 
