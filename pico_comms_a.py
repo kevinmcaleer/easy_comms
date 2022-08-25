@@ -9,9 +9,12 @@ com1 = Easy_comms(uart_id=0, baud_rate=9600)
 com1.start()
 
 while True:
+    message = ""
     message = com1.read()
+    
     if message is not None:
-        print(message.decode('utf-8'))
+        new_message = str(message)
+        print(new_message)
     sleep(1)
 
 # RX = Pin(0)

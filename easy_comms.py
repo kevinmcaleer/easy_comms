@@ -10,10 +10,10 @@ class Easy_comms:
         if baud_rate: self.baud_rate = baud_rate
         self.uart = UART(self.uart_id,self.baud_rate)
         self.uart.init()
-        
+            
     def send(self, message):
         print(f'sending message: {message}')
-        self.uart.write(message)
+        self.uart.write(bytes(message,'utf-8'))
         
     def start(self):
         message = "ahoy"
@@ -21,8 +21,8 @@ class Easy_comms:
         self.send(message)
 
     def read(self)->str:
-        if self.uart.any() > 0:
-            return self.uart.read()
+        if self.uart.any() > 0: 
+            return self.uart.readline().decode('utf-8')
         else:
             return None
         
