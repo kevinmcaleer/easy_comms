@@ -8,8 +8,6 @@ import json
 com1 = Easy_comms(uart_id=0, baud_rate=9600)
 com1.start()
 
-command = {'command':'glow', 'args': {'red':255, 'green':0, 'blue':0}}
-
 com1.send(json.dumps(command))
 
 while True:
