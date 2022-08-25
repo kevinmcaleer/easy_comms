@@ -16,6 +16,6 @@ while True:
     message = com1.read()
     
     if message is not None:
-        print(f"message: {message.strip('\n')}")
+        print(f"message received: {message.strip('\n')}")
     sleep(1)
     count +=1

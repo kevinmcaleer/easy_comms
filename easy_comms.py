@@ -1,3 +1,5 @@
+#Easy comms is a simple class that allows you to send and receive messages over a serial port.
+
 from machine import UART, Pin
 
 class Easy_comms:
@@ -8,7 +10,11 @@ class Easy_comms:
     def __init__(self, uart_id:int, baud_rate:int=None):
         self.uart_id = uart_id
         if baud_rate: self.baud_rate = baud_rate
+
+        # set the baud rate
         self.uart = UART(self.uart_id,self.baud_rate)
+
+        # Initialise the UART serial port
         self.uart.init()
             
     def send(self, message):
