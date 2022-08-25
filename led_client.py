@@ -10,10 +10,11 @@ led = Pin("LED", Pin.OUT, value=0)
 
 while True:
     message = com1.read()
-    
+    print(f'message: {message}')
     if message is not None:
         try:
             command = json.loads(message)
+            print(f'json: {command}')
             if command['command'] == 'blink':
                 if command['args'] == 'on':
                     led.on()
