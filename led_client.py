@@ -15,6 +15,6 @@ while True:
                 led.on()
             if message['args'] == 'off':
                 led.off()
-    sleep(1)
+    sleep(0.01)
         
 
