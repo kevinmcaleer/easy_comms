@@ -9,7 +9,7 @@ command = {'command':'blink', 'args': 'on'}
 com1 = Easy_comms(0,9600)
 led = Pin("LED", Pin.OUT, value=0)
 
-while true:
+while True:
     com1.send(command)
     if command['args'] == 'on':
        command = {'command':'blink', 'args': 'off'}
