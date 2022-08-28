@@ -40,7 +40,7 @@ class Easy_comms:
                 if '\n' in message:
                     new_line = True
                     message = message.strip('\n')
-                    print(f'received message: {message}')
+                    # print(f'received message: {message}')
                     return message
         else:
             return None

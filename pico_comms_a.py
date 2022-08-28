@@ -3,12 +3,9 @@
 
 from easy_comms import Easy_comms
 from time import sleep
-import json
 
 com1 = Easy_comms(uart_id=0, baud_rate=9600)
 com1.start()
-
-#com1.send(json.dumps(command))
 
 while True:
     message = ""
